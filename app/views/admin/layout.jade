@@ -1,0 +1,51 @@
+extends ../layout
+
+append css
+  link(rel='stylesheet', href='/components/fontawesome/web-fonts-with-css/css/fontawesome-all.css')
+  link(rel='stylesheet', href='/css/admin.css')
+
+block main
+    nav.navbar.navbar-dark.sticky-top.bg-dark.flex-md-nowrap.p-0
+      a.navbar-brand.col-sm-3.col-md-2.mr-0(href="#") NODE.JS 博客系统
+
+
+
+      ul.navbar-nav.px-3.nav-personal
+        if user
+        li.nav-item.text-nowrap.nav-see
+          a= user.email
+        li.nav-item.text-nowrap.nav-see
+          a.nav-link(href="/admin/users/logout")
+            | &nbsp; 注销
+    .container-fluid
+      .row
+          nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+            .sidebar-sticky
+              ul.nav.flex-column
+                li.nav-item
+                a.nav-link(class={active: pageName === "/admin/posts"})(href="/admin/posts")
+                  span(data-feather="home")
+                    i.fa.fa-file-o
+                    |                 文章列表
+                  span.sr-only (current)
+                li.nav-item
+                  a.nav-link(class={active:pageName === "/admin/posts/add"})(href="/admin/posts/add")
+                    span(data-feather="shopping-cart")
+                    |                   添加文章
+                li.nav-item
+                  a.nav-link(class={active:pageName === "/admin/categories"})(href="/admin/categories")
+                    span(data-feather="/admin/categories")
+                    |                   分类列表
+                li.nav-item
+                  a.nav-link(class={active:pageName === "/admin/categories/add"})(href="/admin/categories/add")
+                    span(data-feather="shopping-cart")
+                    |                   添加分类
+              ul.nav.flex-column.mb-2
+                li.nav-item
+                  a.nav-link(class={active:pageName === "/admin/users/password"})(href="/admin/users/password")
+                    span(data-feather="file-text")
+                    |                   修改密码
+
+      main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role="main")
+        !=messages()
+        block content
