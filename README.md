@@ -1,5 +1,4 @@
 # nodeblog
-my nodeblog
 
 ### 文章首页预览图：
 ![image](https://github.com/monstereat/nodeblog/blob/master/project-image/localhost_3000_posts.png)
